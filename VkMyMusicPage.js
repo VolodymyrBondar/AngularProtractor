@@ -34,12 +34,12 @@
         albumList: {
             get: function() {
                 browser.driver.sleep(1000);
-                return browser.driver.findElements(by.css("[class='olist audio_album']"));
+                return browser.driver.findElements(by.css(".olist.audio_album>div"));
             }
         },
-        artistName: {
+        saveAlbumButton: {
             get: function() {
-                return albumList.findElements(by.css(""))
+                return browser.driver.findElement(by.css(".flat_button"));
             }
         },
 
@@ -69,11 +69,16 @@
         },
         selectSongsForNewAlbum: {
             value: function() {
-                var album;
-                for(var i=0; i < this.albumList.length; i++){
-                    album = this.albumList[i];
-                    return album.click();
-                }
+                this.albumList.then(function(resp){
+                    for(var i=0; i < resp.length; i++){
+                        resp[i].click();
+                    }
+                })
+            }
+        },
+        saveAlbum: {
+            value: function() {
+                return this.saveAlbumButton.click();
             }
         }
     })

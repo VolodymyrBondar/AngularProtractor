@@ -12,7 +12,7 @@
         },
 
         password: {
-            value: "somepass"
+            value: "somepassword"
         },
         pageTitle: {
             value: "Welcome! | VK"
@@ -39,8 +39,6 @@
                 return this.submitButton.click();
             }
         }
-
-
     });
 
     module.exports = VkLoginPage;

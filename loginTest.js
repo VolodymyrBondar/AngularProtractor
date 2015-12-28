@@ -18,35 +18,15 @@ describe('vk homepage', function() {
     });
 
     it('should create album', function() {
-        loginPage.loginTo(loginPage.login,loginPage.password)
-            .then(function() {
-                return homePage.goToMyMusic();
-            })
-            .then(function(){
-                return myMusicPage.goToMyAlbums();
-            })
-            .then(function() {
-                return myMusicPage.createNewAlbum();
-            })
-            .then(function(){
-                return  myMusicPage.enterNewAlbumName(myMusicPage.newAlbumName);
-            })
-            .then(function(){
-                return myMusicPage.searchMusicForNewAlbum(myMusicPage.artistName);
-            })
-            .then(function(){
-                return console.log(myMusicPage.albumList.count);
-            })
+        loginPage.loginTo(loginPage.login,loginPage.password);
+        homePage.goToMyMusic();
+        myMusicPage.goToMyAlbums();
+        myMusicPage.createNewAlbum();
+        myMusicPage.enterNewAlbumName(myMusicPage.newAlbumName);
+        myMusicPage.searchMusicForNewAlbum(myMusicPage.artistName);
+        myMusicPage.selectSongsForNewAlbum();
+        myMusicPage.saveAlbum();
     });
-
-
-
-    //it('should go to MyMusic page', function() {
-    //    page.loginTo(page.login,page.password);
-    //    page = new VkHomePage;
-    //    page.goToMyMusic;
-    //    browser.driver.sleep(1000);
-    //})
 
     afterEach(function () {
         browser.sleep(1000);
